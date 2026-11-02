@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guía de estudio: Mundell-Fleming, RBC y Solow</title>
+<style>
+:root{--bg:#fafaf7;--fg:#1f2328;--mu:#6b7280;--card:#fff;--bd:#e2e2dc;--ac:#2f5d9e;--ok:#1f7a45;--okb:#e6f4ec;--no:#b3261e;--nob:#fbeaea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#16181c;--fg:#e6e6e3;--mu:#9aa0a6;--card:#1f2227;--bd:#33373d;--ac:#8ab4f8;--ok:#6fcf97;--okb:#173323;--no:#f28b82;--nob:#3a1d1b}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#16181c;--fg:#e6e6e3;--mu:#9aa0a6;--card:#1f2227;--bd:#33373d;--ac:#8ab4f8;--ok:#6fcf97;--okb:#173323;--no:#f28b82;--nob:#3a1d1b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.5rem;margin:.2em 0}h2{font-size:1.2rem;margin:1.6em 0 .6em}
+.sub{color:var(--mu);margin:0 0 14px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.bar button,.rs{border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:20px;padding:6px 14px;font:inherit;cursor:pointer}
+.bar button.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+#sc{margin-left:auto;color:var(--mu);font-size:.95rem}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin:12px 0}
+.t{font-size:.75rem;letter-spacing:.05em;color:var(--ac);font-weight:600}
+.q p{margin:.3em 0 .6em;font-weight:600}
+.o{display:block;width:100%;text-align:left;border:1px solid var(--bd);background:transparent;color:var(--fg);border-radius:8px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover:not([disabled]){border-color:var(--ac)}
+.o.ok{background:var(--okb);border-color:var(--ok)}.o.no{background:var(--nob);border-color:var(--no)}
+.ex{margin-top:10px;padding:10px 12px;border-left:3px solid var(--ac);background:var(--bg);font-size:.95rem}
+details{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+ol{padding-left:20px}li{margin:4px 0}
+.eq{margin:6px 0 4px 10px;font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.02rem;overflow-x:auto}.f{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92rem}
+</style></head><body><main>
+<h1>Guía de estudio: Mundell-Fleming, RBC y Solow</h1>
+<p class="sub"></p>
+<div class="bar" id="bar"></div>
+<div id="qs"></div>
+<h2>Ejercicios prácticos de RBC, paso a paso</h2>
+<p class="sub">Notación: r es la tasa de interés real, w el salario real, ρ la tasa de descuento, y se usa log = ln.</p>
+<details><summary>Ejercicio 1. La firma: salario y tasa de interés (ecuación 4.3)</summary><ol>
+<li><b>Planteamiento.</b> Con precio del producto igual a 1, la firma elige K y L para maximizar sus ganancias:<div class="eq">Π = K<sup>α</sup>(AL)<sup>1−α</sup> − wL − (r+δ)K</div></li>
+<li><b>Condición de primer orden en L.</b> Se deriva respecto a L (A es dado):<div class="eq">∂Π/∂L = (1−α)K<sup>α</sup>A<sup>1−α</sup>L<sup>−α</sup> − w = 0</div></li>
+<li><b>Reordenar.</b> Como K<sup>α</sup>A<sup>1−α</sup>L<sup>−α</sup> = (K/AL)<sup>α</sup>·A, queda:<div class="eq">w = (1−α)(K/AL)<sup>α</sup>A</div> Es el producto marginal del trabajo.</li>
+<li><b>Condición de primer orden en K.</b><div class="eq">∂Π/∂K = αK<sup>α−1</sup>(AL)<sup>1−α</sup> − (r+δ) = 0 ⟹ r = α(AL/K)<sup>1−α</sup> − δ</div></li>
+<li><b>Verificación.</b> wL = (1−α)Y y (r+δ)K = αY, así que wL + (r+δ)K = Y y las ganancias son cero (rendimientos constantes).</li></ol></details>
+<details><summary>Ejercicio 2. Sustitución intertemporal del ocio y elasticidad igual a 1 (4.21)</summary><ol>
+<li><b>Problema de dos períodos.</b> Sin riqueza inicial ni incertidumbre:<div class="eq">máx ln c₁ + b ln(1−l₁) + e<sup>−ρ</sup>[ln c₂ + b ln(1−l₂)] &nbsp; s.a. &nbsp; c₁ + c₂ = w₁l₁ + r(w₁l₁−c₁) + w₂l₂</div></li>
+<li><b>Lagrangiano</b> con multiplicador λ sobre la restricción presupuestaria.</li>
+<li><b>Condiciones de primer orden en l₁ y l₂:</b><div class="eq">−b/(1−l₁) + λw₁(1+r) = 0 &nbsp;&nbsp;&nbsp; −e<sup>−ρ</sup>b/(1−l₂) + λw₂ = 0</div></li>
+<li><b>Dividir una condición entre otra</b> (λ y b se cancelan):<div class="eq">(1−l₂)/[e<sup>−ρ</sup>(1−l₁)] = w₁(1+r)/w₂</div></li>
+<li><b>Resultado.</b><div class="eq">(1−l₁)/(1−l₂) = [1/(e<sup>−ρ</sup>(1+r))]·(w₂/w₁)</div> Más ocio hoy si el salario futuro es relativamente alto; menos ocio hoy (más trabajo) si r sube o si el hogar es paciente (ρ bajo).</li>
+<li><b>Elasticidad.</b> Con períodos 0 y 1: h₁/h₀ = e<sup>−ρ</sup>(1+r)·w₀/w₁, con h = 1−l. Tomando logaritmos: ln(h₁/h₀) = ln[e<sup>−ρ</sup>(1+r)] + ln(w₀/w₁). Derivando respecto a ln(w₀/w₁): e<sub>sus</sub> = 1.</li>
+<li><b>Numérico.</b> Con ρ = 0.05, r = 0.04, w₂/w₁ = 1.10: (1−l₁)/(1−l₂) = 1.10/(0.9512 × 1.04) = 1.10/0.9893 ≈ 1.11. El ocio de hoy es 11% mayor que el de mañana.</li></ol></details>
+<details><summary>Ejercicio 3. Consumo contra ocio en el mismo período (4.26) y calibración de b</summary><ol>
+<li><b>Costo marginal.</b> Trabajar Δl más reduce la utilidad en: <div class="eq">LMU·Δl = e<sup>−ρt</sup>(N<sub>t</sub>/H)·b/(1−l<sub>t</sub>)·Δl</div></li>
+<li><b>Beneficio marginal.</b> El ingreso extra w<sub>t</sub>Δl se gasta en consumo y aumenta la utilidad en: <div class="eq">CMU·w<sub>t</sub>Δl = e<sup>−ρt</sup>(N<sub>t</sub>/H)·(1/c<sub>t</sub>)·w<sub>t</sub>Δl</div></li>
+<li><b>Igualar</b> costo y beneficio y simplificar los factores comunes:<div class="eq">b/(1−l<sub>t</sub>) = w<sub>t</sub>/c<sub>t</sub> ⟹ c<sub>t</sub>/(1−l<sub>t</sub>) = w<sub>t</sub>/b</div></li>
+<li><b>Calibración de b.</b> Despejando, b = w(1−l)/c. Con l* = 1/3, w = 2 y c = 1.2: b = 2 × (2/3) ÷ 1.2 ≈ 1.11.</li>
+<li><b>Interpretación.</b> Un b mayor significa más valor del ocio y menos trabajo para el mismo w. Un w mayor reduce 1−l (el ocio) si c no cambia.</li></ol></details>
+<details><summary>Ejercicio 4. Ecuación de Euler (4.23) y calibración de ρ</summary><ol>
+<li><b>Idea.</b> En el óptimo, reducir c<sub>t</sub> en Δc para consumir más en t+1 no cambia la utilidad total.</li>
+<li><b>Costo hoy:</b><div class="eq">e<sup>−ρt</sup>(N<sub>t</sub>/H)·Δc/c<sub>t</sub></div></li>
+<li><b>Beneficio mañana.</b> Lo ahorrado rinde (1+r) y el consumo por miembro se reparte entre N<sub>t+1</sub> = N<sub>t</sub>e<sup>n</sup> miembros:<div class="eq">e<sup>−ρ(t+1)</sup>(N<sub>t+1</sub>/H)(1/c<sub>t+1</sub>)e<sup>−n</sup>(1+r)Δc</div></li>
+<li><b>Igualar y cancelar</b> N<sub>t</sub>/H, e<sup>−ρt</sup> y Δc (N<sub>t+1</sub>e<sup>−n</sup> = N<sub>t</sub>):<div class="eq">1/c<sub>t</sub> = e<sup>−ρ</sup>(1+r)/c<sub>t+1</sub> ⟹ c<sub>t+1</sub>/c<sub>t</sub> = e<sup>−ρ</sup>(1+r)</div> Con incertidumbre se agrega la esperanza E<sub>t</sub> y la covarianza entre 1/c<sub>t+1</sub> y 1+r<sub>t+1</sub>.</li>
+<li><b>Estado estacionario.</b> Con c constante, 1 = e<sup>−ρ</sup>(1+r*), luego ρ = ln(1+r*). Con r* = 1.5%: ρ = ln 1.015 ≈ 0.0149.</li>
+<li><b>Lectura.</b> Si r > ρ (aprox.), el consumo crece: el hogar renuncia a consumo hoy porque el ahorro rinde más de lo que descuenta.</li></ol></details>
+<details><summary>Ejercicio 5. Efecto inicial de un shock tecnológico de 1%</summary><ol>
+<li><b>Producción en logaritmos</b> (α = 1/3): <div class="eq">ln Y = α ln K + (1−α)(ln A + ln L)</div></li>
+<li><b>Variación en el primer período.</b> K es variable de estado y no cambia; ΔlnA = 1% y, según la figura del modelo, ΔlnL ≈ 0.35%.</li>
+<li><b>Producto:</b><div class="eq">Δln Y = (1−α)(ΔlnA + ΔlnL) = (2/3)(1 + 0.35) = 0.90%</div></li>
+<li><b>Salario real.</b> De w = (1−α)(K/AL)<sup>α</sup>A:<div class="eq">Δln w = (1−α)ΔlnA − αΔlnL = 0.667 − (1/3)(0.35) ≈ 0.55%</div></li>
+<li><b>Resultados.</b> Coinciden con las figuras de producción (0.9) y salarios (0.55). Y, L y w suben: son procíclicos. El capital sube después y llega a su máximo tras unos 20 trimestres.</li></ol></details>
+<details><summary>Ejercicio 6. Solow: el producto marginal del trabajo es A[f(k) − k·f′(k)]</summary><ol>
+<li><b>Forma intensiva.</b> F(K, AL) = AL·f(k), con k = K/(AL).</li>
+<li><b>Derivar respecto a L</b> con la regla del producto:<div class="eq">∂F/∂L = A·f(k) + AL·f′(k)·∂k/∂L</div></li>
+<li><b>Derivada de k:</b><div class="eq">∂k/∂L = −K/(AL²) = −k/L</div></li>
+<li><b>Sustituir y simplificar:</b><div class="eq">∂F/∂L = A·f(k) − A·f′(k)·k = A[f(k) − k·f′(k)]</div></li>
+<li><b>Agotamiento del producto.</b> Con r + δ = f′(k): wL + (r+δ)K = AL[f(k) − kf′(k)] + f′(k)·ALk = AL·f(k) = F, es decir wL + rK = F − δK.</li></ol></details>
+</main>
+<script>
+const Q=[
+["MF","Con tipo de cambio fijo y movilidad perfecta de capitales, una política fiscal expansiva…",["no cambia Y porque se desplaza por XN","eleva Y, mantiene i = i* y aumenta las reservas","eleva Y y deprecia el tipo de cambio","eleva Y y deja i por encima de i* de forma permanente"],1,"La IS se desplaza a la derecha y presiona a apreciar la moneda; el banco central compra divisas, la oferta monetaria crece y la LM acompaña. Y sube, i vuelve a i* y las reservas aumentan. La opción A describe el régimen flexible; C y D contradicen i = i* y el tipo fijo."],
+["MF","Con tipo de cambio fijo, una expansión monetaria…",["eleva Y permanentemente","baja i permanentemente","no cambia Y y reduce las reservas","aprecia el tipo de cambio"],2,"La LM a la derecha baja i, sale capital y la moneda tiende a depreciarse. Para sostener el tipo fijo, el banco central vende divisas y la oferta monetaria vuelve a su nivel. Y e i no cambian y caen las reservas: la política monetaria es ineficaz."],
+["MF","Con tipo de cambio flexible, una política fiscal expansiva…",["eleva Y y aprecia la moneda","no cambia Y: aprecia la moneda y cae XN","eleva Y y deprecia la moneda","baja i por debajo de i*"],1,"La IS se mueve a la derecha, tiende a subir i, entra capital y la moneda se aprecia. Las exportaciones netas caen y la IS regresa a su lugar, de modo que Y queda igual. Hay desplazamiento total por XN. Las demás opciones suponen que la fiscal sí es eficaz."],
+["MF","Con tipo de cambio flexible, una expansión monetaria…",["no cambia Y","eleva Y, deprecia la moneda y mejora XN","eleva Y y aprecia la moneda","sube las reservas"],1,"La LM a la derecha baja i, sale capital y la moneda se deprecia. Si se cumple Marshall-Lerner, XN mejora y la IS se desplaza a la derecha, con lo cual Y sube y i vuelve a i*. Las reservas no cambian porque el tipo flota."],
+["MF","La trinidad imposible dice que no se pueden tener a la vez…",["inflación baja, pleno empleo y déficit cero","libre movilidad de capitales, tipo de cambio fijo y política monetaria independiente","tipo flexible, déficit fiscal y reservas altas","crecimiento, estabilidad y apertura comercial"],1,"Es la formulación de Mundell: si hay libre flujo de capitales y tipo fijo, la tasa de interés queda atada a i* y se pierde la política monetaria. Hay que renunciar a una esquina (EE.UU., Hong Kong o China en tu lámina)."],
+["MF","¿Por qué la curva BP es horizontal con movilidad perfecta?",["porque N es cero","porque F tiende a infinito y la pendiente N/F tiende a cero","porque el tipo de cambio es fijo","porque LM es vertical"],1,"La pendiente de la BP es N/F. Con movilidad perfecta, cualquier diferencia entre i e i* genera flujos enormes (F → ∞), de modo que la pendiente se anula y solo i = i* equilibra la balanza de pagos."],
+["MF","La condición de Marshall-Lerner garantiza que…",["la depreciación mejora la balanza comercial","el multiplicador sea mayor que 1","la LM sea creciente","los precios sean flexibles"],0,"Si la suma de las elasticidades de exportaciones e importaciones respecto al tipo de cambio supera 1, una depreciación aumenta XN. Sin ella, la política monetaria en flexible podría no expandir Y."],
+["MF","En la IS abierta, si sube la propensión a importar m…",["la IS es más plana","el multiplicador k baja y la IS es más empinada","la IS no cambia","la LM se desplaza"],1,"k = 1/(1 − (b − m)): al subir m baja b − m y por tanto k. La pendiente de la IS es −1/(Īk), cuyo valor absoluto crece cuando k baja, así que la IS es más empinada."],
+["MF","Con tipo flexible y movilidad perfecta, ¿qué determina el nivel de Y?",["la IS","la LM: Y = (M/p + h·i*)/s","la BP","el multiplicador k"],1,"Como i = i*, la LM fija Y. El tipo de cambio se ajusta para que la IS pase por ese punto. Por eso solo la política monetaria mueve Y en flexible, y en fijo solo la fiscal, a través de la IS."],
+["RBC","En la teoría de ciclos económicos reales, las fluctuaciones nacen principalmente de…",["rigideces nominales y demanda agregada","shocks reales de oferta, como la tecnología, con precios flexibles","cambios en la oferta monetaria","expectativas irracionales"],1,"El modelo RBC supone competencia perfecta, ajustes inmediatos y agentes optimizadores. El dinero no genera el ciclo; lo hacen los shocks reales (tecnología y gasto). La A y la C describen la visión keynesiana o monetaria."],
+["RBC","La firma que maximiza ganancias contrata trabajo hasta que w sea igual a…",["(1−α)(K/AL)^α · A","α(AL/K)^(1−α) − δ","Y/L","(K/AL)^α"],0,"w es el producto marginal del trabajo de la Cobb-Douglas. La opción B es la tasa de interés (PMgK menos δ); C es el producto medio, no el marginal; D omite el factor (1−α)·A."],
+["RBC","En Y = K^α(AL)^(1−α), la suma de exponentes igual a 1 implica…",["rendimientos decrecientes de escala","rendimientos constantes de escala y α como participación del capital","elasticidad de sustitución igual a 2","progreso técnico neutral en el sentido de Hicks"],1,"Con exponentes que suman 1, duplicar K y AL duplica Y. Cada insumo es pagado por su producto marginal, por lo que α es la participación del capital y 1−α la del trabajo. La elasticidad de sustitución entre factores es 1."],
+["RBC","En u = ln c + b·ln(1−l), el parámetro b mide…",["la tasa de descuento","el peso del ocio en la utilidad frente al consumo","la participación del capital","la inflación esperada"],1,"La utilidad marginal del consumo es 1/c y la desutilidad marginal del trabajo es b/(1−l). Un b mayor significa que el hogar valora más el ocio y ofrece menos trabajo para un salario dado."],
+["RBC","La condición c/(1−l) = w/b indica que…",["el salario iguala la relación marginal de sustitución entre consumo y ocio","el consumo es constante","el trabajo es indivisible","la tasa de interés es cero"],0,"Se obtiene igualando el costo marginal de trabajar (b/(1−l)) con el beneficio de consumir más (w/c). Es una condición intratemporal: describe la elección entre consumo y ocio en el mismo período."],
+["RBC","Si sube la tasa de interés real r, en la regla de sustitución intertemporal del ocio…",["se trabaja menos hoy y más mañana","se trabaja más hoy y menos mañana","no cambia la oferta de trabajo","cambia solo el consumo"],1,"En (1−l₁)/(1−l₂) = w₂/(e^(−ρ)(1+r)·w₁), una r mayor baja la razón: el ocio de hoy se reduce y se trabaja más hoy. Trabajar hoy rinde más porque el ingreso ahorrado gana un interés mayor."],
+["RBC","Con utilidad logarítmica en el ocio, la elasticidad de sustitución intertemporal del ocio respecto al salario relativo es…",["0","1","infinita","negativa"],1,"El logaritmo (Cobb-Douglas) hace que el ocio relativo sea proporcional al salario relativo: un cambio de 1% en w₀/w₁ cambia h₁/h₀ en 1%. Con γ > 0 en el ocio la elasticidad cambia y es 1/γ."],
+["RBC","La ecuación de Euler 1/cₜ = e^(−ρ)·E[(1+rₜ₊₁)/cₜ₊₁] expresa que…",["el hogar consume todo su ingreso hoy","el costo de consumir menos hoy iguala el beneficio esperado de consumir más mañana","el consumo es siempre creciente","r es cero en equilibrio"],1,"Si el hogar reduce cₜ para ahorrar, pierde utilidad hoy y gana el retorno 1+r mañana descontado por ρ. En el óptimo ambos efectos se igualan. La covarianza con el retorno recoge el riesgo."],
+["RBC","Tras un shock tecnológico positivo, ¿cuál es el patrón inicial de las variables?",["Y, empleo y salarios suben; el capital sube después en forma de joroba","Y sube y el empleo cae","el consumo cae y la inversión sube","los salarios caen"],0,"Sube la productividad, suben w y r y los hogares sustituyen ocio por trabajo. Y, L, w y la inversión son procíclicos; el capital se acumula gradualmente, por lo que su pico llega después."],
+["RBC","Tras un shock positivo de gasto de gobierno en RBC…",["el consumo sube","el consumo cae y el empleo sube","el salario real sube","el capital sube mucho"],1,"El gobierno absorbe recursos; los hogares se sienten más pobres (efecto riqueza), trabajan más y consumen menos, con lo que cae w y sube r levemente. El consumo es contracíclico y el empleo, procíclico."],
+["RBC","En Hansen (1985), la elasticidad de sustitución intertemporal del ocio del agente representativo es infinita porque…",["los individuos son muy sensibles al salario","la utilidad agregada es lineal en el ocio, por trabajo indivisible y loterías","no hay capital","el choque es permanente"],1,"Con trabajo indivisible y loterías, la utilidad agregada es U = log c + B·l, lineal en ocio, y eso no depende de la elasticidad individual. Así se explican horas muy variables con productividad poco variable."],
+["RBC","En Hansen (1985), la razón de variabilidad horas/productividad es…",["≈ 1 con trabajo indivisible y 2.7 con divisible","2.7 con trabajo indivisible y cercana a 1 con divisible; en EE.UU. es 1.4","igual en ambas economías","0.5 en los datos"],1,"El modelo indivisible la sobrepredice (2.7) y el divisible la subpredice (≈1). Los datos (1.4) quedan en medio, lo que sugiere que se necesitan ambos márgenes, extensivo e intensivo."],
+["RBC","Una diferencia central entre los modelos keynesiano y RBC es que en RBC…",["los precios son rígidos","el dinero genera el ciclo","hay microfundamentos y modelos dinámicos con competencia perfecta","el ciclo viene de la demanda agregada"],2,"RBC fundamenta el comportamiento de los agentes, supone mercados walrasianos y no incluye variables monetarias como fuente del ciclo. El modelo keynesiano usa estática comparativa, mercados imperfectos y rigideces nominales."],
+["RBC","Para derivar la tasa de descuento ρ en estado estacionario sin incertidumbre se usa…",["la identidad de la renta","1 = e^(−ρ)(1 + r*), es decir, ρ = ln(1 + r*)","w = PMgL","k̇ = 0"],1,"En estado estacionario el consumo es constante y la ecuación de Euler se reduce a 1 = e^(−ρ)(1 + r*). Con r* = 1.5% resulta ρ ≈ 0.0149."],
+["Solow","La ecuación fundamental de Solow es…",["k̇ = s·f(k) − (n + g + δ)k","k̇ = f(k) − δk","k̇ = s·k − n·k","Ẏ = sY − δK"],0,"El capital por unidad de trabajo efectivo cambia por la diferencia entre inversión realizada, s·f(k), y la inversión de reposición, (n+g+δ)k, que compensa depreciación y crecimiento de L y A."],
+["Solow","Un aumento permanente de la tasa de ahorro s…",["eleva k* y y*, pero no la tasa de crecimiento de largo plazo","eleva la tasa de crecimiento de largo plazo","reduce k*","no tiene efecto"],0,"La curva de inversión realizada se desplaza hacia arriba y sube el estado estacionario (k*, y*). Durante la transición el crecimiento es mayor, pero en el largo plazo el producto por trabajador crece a g."],
+["Solow","La regla de oro exige…",["f′(k) = n + g + δ, que con Cobb-Douglas implica s = α","f′(k) = 0","s = 1","que k sea igual a cero"],0,"Maximiza el consumo de estado estacionario: la pendiente de f debe igualar la pendiente de la recta de reposición. Si s > s_oro hay ineficiencia dinámica y conviene ahorrar menos."],
+["Solow","Una disminución de la tasa de depreciación δ…",["gira hacia abajo la recta de reposición y sube k*","sube el crecimiento de largo plazo","baja la inversión realizada","no afecta nada"],0,"La inversión de reposición (n+g+δ)k se vuelve menos empinada; corta a la curva s·f(k) en un k mayor. Cambia el nivel del estado estacionario, no la tasa de crecimiento de largo plazo."],
+["Solow","Un aumento en la tasa de progreso técnico g…",["sube la recta de reposición y baja k* por trabajador efectivo, pero Y/L crece más rápido","sube k*","no cambia nada","baja Y/L de forma permanente"],0,"n+g+δ aumenta, con lo que la recta de reposición es más empinada y baja k* (por unidad de trabajo efectivo). Sin embargo, el producto por trabajador es A·y y A crece más rápido."],
+["Solow","Si cada factor es pagado por su producto marginal y hay rendimientos constantes, entonces…",["wL + rK = F(K, AL) − δK","wL + rK > F","wL = rK","w = r"],0,"Por el teorema de Euler para funciones homogéneas de grado 1, F = F_K·K + F_L·L. Restando la depreciación se agota el producto neto; no hay beneficios económicos."],
+["Solow","Si Z = X·Y, entonces la tasa de crecimiento de Z es…",["la suma de las tasas de X e Y","la resta de las tasas","el producto de las tasas","α veces la de X"],0,"Como ln Z = ln X + ln Y, derivar respecto al tiempo da Ż/Z = Ẋ/X + Ẏ/Y. Para el cociente se resta, y para X^α se multiplica por α."],
+["MF","Con tipo de cambio fijo y movilidad perfecta, el banco central expande el crédito interno. Según De Gregorio (cap. 20), ¿qué ocurre?",["sube Y y baja i","Y, i y e no cambian y las reservas caen en igual magnitud","la moneda se aprecia","la oferta monetaria sube de forma permanente"],1,"El público demanda activos y los únicos disponibles son extranjeros, pues la oferta de bonos locales está dada. El banco central pierde reservas en la misma cantidad que el crédito adicional; IS y LM quedan en su lugar. [De Gregorio, cap. 20]"],
+["MF","Con perfecta movilidad de capitales, el banco central puede controlar…",["el tipo de cambio o la cantidad de dinero, pero no ambos","ambos a la vez","ninguno de los dos","la tasa de interés externa"],0,"Es la trinidad imposible en palabras de De Gregorio: no se puede tener control monetario, control del tipo de cambio y perfecta movilidad de capitales a la vez. Para controlar el dinero hay que dejar flotar el tipo de cambio. [De Gregorio, cap. 20]"],
+["MF","Con tipo fijo y movilidad perfecta, ¿por qué no es posible esterilizar las intervenciones cambiarias?",["porque no hay reservas","porque para sostener la paridad el banco central debe comprar o vender divisas, y eso modifica la base monetaria","porque la LM es horizontal","porque i es mayor que i*"],1,"Si intentara compensar la variación de dinero, la tasa se separaría de i* y habría flujos de capital que obligarían a deshacer la compensación. La oferta monetaria es endógena bajo tipo fijo. [De Gregorio, cap. 20]"],
+["MF","En tipo fijo, la política fiscal expansiva aumenta la oferta de dinero porque…",["el banco central imprime dinero para financiar el déficit","la mayor actividad eleva la demanda de dinero y el banco central acumula reservas hasta restablecer el equilibrio","baja la tasa de interés","se deprecia la moneda"],1,"La IS a la derecha presiona a subir i y a apreciar; para mantener el tipo fijo el banco central compra divisas y emite moneda. La LM se desplaza hasta cortar IS en i = i*. [De Gregorio, cap. 20]"],
+["MF","Con tipo flexible y movilidad perfecta, cae Y* (menores exportaciones). El resultado es…",["Y baja","Y no cambia: la moneda se deprecia y XN se recupera","Y sube","i baja por debajo de i*"],1,"La IS se desplaza a la izquierda, tiende a bajar i y sale capital, con lo cual la moneda se deprecia hasta que la IS vuelve a cruzar la LM en el mismo Y (Y = (M/p + h·i*)/s no depende de Y*)."],
+["MF","Con tipo flexible y fiscal expansiva, la apreciación empeora XN siempre que…",["la propensión a importar sea cero","las elasticidades de comercio sumen más de 1 (Marshall-Lerner)","la LM sea vertical","i sea menor que i*"],1,"Si el valor absoluto de ηX + ηM supera 1, un movimiento del tipo de cambio mueve XN en sentido contrario: la apreciación reduce XN y desplaza la IS hacia atrás, anulando el efecto de G."],
+["MF","Según la lámina de tu curso, Guatemala tiene un régimen de…",["tipo fijo","flotación libre","flotación administrada","currency board"],2,"La lámina de regímenes cambiarios agrupa a Guatemala con Chile, Perú, Colombia, Brasil, la Unión Europea y Japón en flotación administrada: el tipo de cambio fluctúa, con intervención del banco central para moderar la volatilidad."],
+["RBC","En Romer (cap. 4), con ρ_A = 0 y α = 1/3, ¿qué fracción del efecto inicial de un shock tecnológico queda sobre Y tras dos períodos?",["≈ 11% (α² = 1/9)","≈ 33%","≈ 67%","0%"],0,"Con ρ_A = 0, Y_t = α·Y_{t−1} + (1 − α)·ε_{A,t}, de modo que el efecto decae como α^s. Con α = 1/3, tras dos períodos queda (1/3)² ≈ 0.11; es decir, casi nueve décimas partes han desaparecido. [Romer, cap. 4]"],
+["RBC","Romer concluye que el modelo RBC básico…",["amplifica fuertemente los shocks transitorios","carece de un mecanismo de propagación que convierta un shock transitorio en una variación significativa y duradera de Y","no genera comovimientos","predice una producción constante"],1,"La persistencia de Y viene casi toda de la del shock (ρ_A) y no del modelo; el capital aporta poca. Por eso se discute si los shocks tecnológicos persistentes explican por sí solos el ciclo. [Romer, cap. 4]"],
+["RBC","Según Romer, ¿por qué sube la tasa de interés real tras un shock tecnológico positivo?",["porque cae el ahorro","porque sube el PMgK futuro, aumenta la inversión y el ahorro, y por Euler el consumo esperado creciente exige una r mayor","porque sube la oferta monetaria","porque cae el empleo"],1,"Un mayor ahorro transitorio implica un crecimiento esperado del consumo mayor; por la condición intertemporal (4.23), eso requiere un valor esperado de r también mayor. [Romer, cap. 4]"],
+["RBC","¿Qué crítica hace Romer a suponer que A fluctúa alrededor de una tendencia determinista?",["es incompatible con rendimientos constantes","se adopta por conveniencia; los cambios tecnológicos probablemente tienen un componente duradero","implica que no hay capital","supone dinero neutral"],1,"Con tendencia determinista, el efecto de un shock tiende a cero a la larga. Es plausible que las innovaciones tengan efectos duraderos, lo que cambiaría la dinámica del modelo. [Romer, cap. 4]"],
+["RBC","Si sube el salario real w, con consumo c y b constantes, en c/(1 − l) = w/b…",["el ocio 1 − l baja, es decir, se trabaja más","el ocio sube","el ocio no cambia","c cae"],0,"Despejando, 1 − l = b·c/w: un w mayor reduce el ocio. Es el efecto sustitución: el ocio se vuelve más caro. Con c endógeno actúa también el efecto riqueza."],
+["RBC","En la linealización ln c − ln(1 − l) = ln((1 − α)/b) + (1 − α)ln A + α ln K − α ln L, un aumento de K (con A y L fijos)…",["reduce c/(1 − l)","aumenta c/(1 − l), porque sube el salario real","no cambia c/(1 − l)","reduce A"],1,"Como w = (1 − α)(K/AL)^α·A, más capital eleva el producto marginal del trabajo y c/(1 − l) = w/b sube en α·ΔlnK."],
+["RBC","Con δ = 2.5% trimestral (Hansen y Campbell), la depreciación anual es aproximadamente…",["2.5%","5%","10%","25%"],2,"Cuatro trimestres de 2.5% dan alrededor de 10% anual. Hansen y Kydland-Prescott lo consideran un compromiso razonable entre capitales que se deprecian a distinto ritmo."],
+["RBC","Ante un shock de gasto de gobierno, ¿cuáles variables son contracíclicas en RBC?",["consumo, salario real y capital","empleo y producto","inversión y tasa de interés","ninguna"],0,"Y y L suben, pero C cae (efecto riqueza), w baja (más L con la misma tecnología) y K baja levemente. El empleo y el PIB son procíclicos."],
+["RBC","¿Por qué el efecto de G sobre Y es pequeño en RBC (≈ 0.1 por 1% de G)?",["porque la tecnología sube","porque solo actúa por mayor oferta de trabajo a través del efecto riqueza; la productividad no cambia","porque la inversión sube mucho","porque r baja mucho"],1,"Más G reduce la riqueza de los hogares, que ofrecen más trabajo; Y sube solo vía L, y C cae. No hay multiplicador keynesiano de demanda."],
+["Solow","Con Cobb-Douglas, la velocidad de convergencia al estado estacionario es aproximadamente…",["α(n + g + δ)","(1 − α)(n + g + δ)","s·(n + g + δ)","n + g"],1,"Linealizando k̇ en torno a k*, se obtiene d(k − k*)/dt = −(1 − α)(n + g + δ)(k − k*). Con α = 1/3 y n + g + δ = 0.06, cada año se cierra cerca de 4% de la brecha. [Romer, cap. 1]"],
+["Solow","Con α = 1/3, si s sube 10%, y* aumenta aproximadamente…",["10%","5%","3.3%","20%"],1,"y* = (s/(n + g + δ))^(α/(1 − α)): la elasticidad respecto a s es α/(1 − α) = 0.5. Un aumento de 10% en s eleva y* cerca de 5%."],
+["Solow","Durante la transición, a medida que k sube hacia k*, la tasa de interés r y el salario w…",["r sube y w baja","r baja y w sube","ambos suben","ambos bajan"],1,"r = f′(k) − δ cae por rendimientos decrecientes y w = A[f(k) − k·f′(k)] sube con k. Por eso un país pobre con poco capital tiene r alta y w baja."],
+["Solow","En Solow, el crecimiento de largo plazo del producto por trabajador es…",["endógeno y depende de s","exógeno, igual a la tasa de progreso técnico g","cero","igual a n"],1,"En el estado estacionario k es constante y Y/L = A·y crece a g. Es una limitación del modelo: el progreso técnico es exógeno y por eso surgieron los modelos de crecimiento endógeno."]
+];
+const T={MF:"MUNDELL-FLEMING",RBC:"RBC",Solow:"SOLOW"};
+const bar=document.getElementById("bar"),box=document.getElementById("qs");
+let filt="Todos",ans={};
+function score(){const a=Object.keys(ans).length,c=Object.values(ans).filter(x=>x).length;document.getElementById("sc").textContent=c+" correctas de "+a+" respondidas ("+Q.length+" preguntas)"}
+function draw(){
+ box.innerHTML="";
+ Q.forEach((q,i)=>{
+  if(filt!="Todos"&&q[0]!=filt)return;
+  const d=document.createElement("div");d.className="q";
+  d.innerHTML='<div class="t">'+T[q[0]]+" · "+(i+1)+"</div><p>"+q[1]+"</p>";
+  q[2].forEach((o,j)=>{
+   const b=document.createElement("button");b.className="o";b.textContent=String.fromCharCode(65+j)+") "+o;
+   b.onclick=()=>pick(d,i,j);d.appendChild(b);
+  });
+  box.appendChild(d);
+  if(i in ans)show(d,i,ans[i].j);
+ });
+ score();
+}
+function pick(d,i,j){if(i in ans)return;ans[i]={j:j,ok:j==Q[i][3]};ans[i]=ans[i].ok;ans[i]=ans[i];show(d,i,j,true)}
+function show(d,i,j){
+ const ok=Q[i][3];
+ d.querySelectorAll(".o").forEach((b,k)=>{b.disabled=true;if(k==ok)b.classList.add("ok");else if(k==j)b.classList.add("no")});
+ if(!d.querySelector(".ex")){const e=document.createElement("div");e.className="ex";e.innerHTML="<b>"+(j==ok?"Correcto. ":"Incorrecto. ")+"La respuesta es "+String.fromCharCode(65+ok)+".</b> "+Q[i][4];d.appendChild(e)}
+ chosen[i]=j;ans[i]=(j==ok);score();
+}
+const chosen={};
+function show2(){}
+const _pick=pick;
+pick=function(d,i,j){if(i in chosen)return;show(d,i,j)};
+function redraw(){box.innerHTML="";Q.forEach((q,i)=>{if(filt!="Todos"&&q[0]!=filt)return;const d=document.createElement("div");d.className="q";d.innerHTML='<div class="t">'+T[q[0]]+" · "+(i+1)+"</div><p>"+q[1]+"</p>";q[2].forEach((o,j)=>{const b=document.createElement("button");b.className="o";b.textContent=String.fromCharCode(65+j)+") "+o;b.onclick=()=>pick(d,i,j);d.appendChild(b)});box.appendChild(d);if(i in chosen)show(d,i,chosen[i])});score()}
+["Todos","MF","RBC","Solow"].forEach(f=>{const b=document.createElement("button");b.textContent=f=="MF"?"Mundell-Fleming":f;if(f=="Todos")b.className="on";b.onclick=()=>{filt=f;bar.querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on");redraw()};bar.appendChild(b)});
+const sc=document.createElement("span");sc.id="sc";bar.appendChild(sc);
+const rs=document.createElement("button");rs.className="rs";rs.textContent="Reiniciar";rs.onclick=()=>{for(const k in chosen)delete chosen[k];for(const k in ans)delete ans[k];redraw()};bar.appendChild(rs);
+redraw();
+</script></body></html>
